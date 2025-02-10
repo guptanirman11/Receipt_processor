@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Receipt Processor</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Fetch Receipt Processor</h1>
+    <textarea id="jsonInput" rows="10" placeholder="Paste Your Receipt JSON here..."></textarea><br>
+    <button onclick="uploadReceipt()">Submit Your Receipt</button>
+    <button onclick="clearInput()">Clear</button>
+
+    <h2>Receipt ID:</h2>
+    <p id="receiptId"></p>
+
+    <h2>Enter Receipt ID to Get Points</h2>
+    <textarea id="receiptIDInput" rows="1" placeholder="Enter Receipt ID here..."></textarea><br>
+    <button onclick="getPointsFromInput()">Calculate Your Points</button>
+
+    <h2>Points Earned:</h2>
+    <p id="points"></p>
+
+    <script src="script.js"></script>
+</body>
+</html>
