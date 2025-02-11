@@ -43,6 +43,12 @@ func ProcessReceipt(c *gin.Context) {
 		return
 	}
 
+	if receipt.Retailer == "" || receipt.PurchaseDate == "" || receipt.PurchaseTime == "" ||
+		len(receipt.Items) == 0 || receipt.Total == "" {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "The receipt is invalid."})
+		return
+	}
+
 	receiptID := uuid.New().String()
 
 	points := CalculatePoints(receipt)
