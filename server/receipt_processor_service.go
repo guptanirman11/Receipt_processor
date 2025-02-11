@@ -165,7 +165,7 @@ func main() {
 	r := gin.Default()
 
 	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"http://127.0.0.1:5500"},
+		AllowOrigins:     []string{"http://localhost:80", "http://localhost"},
 		AllowMethods:     []string{"GET", "POST", "OPTIONS"},
 		AllowHeaders:     []string{"Content-Type"},
 		ExposeHeaders:    []string{"Content-Length"},
@@ -175,5 +175,5 @@ func main() {
 	r.POST("/receipts/process", ProcessReceipt)
 	r.GET("/receipts/:id/points", GetPoints)
 
-	r.Run(":8080") // Starting server on port 8080
+	r.Run(":8080")
 }
