@@ -43,10 +43,24 @@ Receipt_Process/
 The web server has client and server files.
 
 ## Run instructions
-The dockerfile in both server and client is spinned up using Docker compose file. The Docker compose file establishes client and server in the same network so that cross-network issues does not arise and moreover it improves the security as well not allowing out of network services to interact with it.
+The Dockerfile loads and run the backend go file and run a nginx server.
+The Nginx server hosts the static files and reverse proxy the api calls to the backend at prot 8080 where the gin server is running and listening.
+ cmds to run the service
+ `docker build -t receipt_service .`
+ `docker run -p 80:80 -p 8080:8080 receipt_service`
+
+ then you got localhost:80 on web browser.
+
+ There you have to paste the json receipt. If the json receipt is correct it will return the reeipt id and also by default auto fill the receipt id to calculate points text area. After that you can click on Calculate your points button to get you points if the receipt id is valid.
 
 ## The server uses in-memory map to store receipt_id and points associated to a particula id
 
 
 ## Future Extensions
  The client right now can take one receipt from the json pasted but can be extended later on for an array of lists to process and return {id:points} for each receipt.
+
+
+ References
+ 1) https://gin-gonic.com/docs/quickstart/ 
+ 2) https://stackoverflow.com/questions/10075304/nginx-fails-to-load-css-files
+ 3) https://github.com/nginx/nginx/blob/master/conf/nginx.conf

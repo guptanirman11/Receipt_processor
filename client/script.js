@@ -9,7 +9,7 @@ async function uploadReceipt(){
     }
 
     try {
-        JSON.parse(jsonInput)
+        // JSON.parse(jsonInput)
 
         const response = await fetch("http://localhost:8080/receipts/process", {
             method: "POST",
@@ -25,7 +25,7 @@ async function uploadReceipt(){
         }
 
         receiptID = data.id
-        document.getElementById("receiptId").innerText = `Receipt ID: ${receiptID}`;
+        document.getElementById("receiptId").innerText = receiptID;
 
         // Automatically fill in the receipt ID input field
         document.getElementById("receiptIDInput").value = receiptID;
