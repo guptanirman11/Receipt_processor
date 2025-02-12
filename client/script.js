@@ -9,7 +9,7 @@ async function uploadReceipt(){
     }
 
     try {
-        // JSON.parse(jsonInput)
+        JSON.parse(jsonInput)
 
         const response = await fetch("http://localhost:8080/receipts/process", {
             method: "POST",
