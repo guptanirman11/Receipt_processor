@@ -26,16 +26,16 @@ A receipt processor application that calculates the number of points earned from
 ## File Structure
 ```
 Receipt_Process/
-|── client/
-|   |── index.html
-|   |── style.css
-|   |── script.js
-|   |── receipt.json
-|── server/
-|   |── receipt_processor_service.go
-|── go.mod
-|── go.sum
-|── README.md
+|-- client/
+|   |-- index.html
+|   |-- style.css
+|   |-- script.js
+|   |-- receipt.json
+|-- server/
+|   |-- receipt_processor_service.go
+|-- go.mod
+|-- go.sum
+|-- README.md
 ```
 
 ## Run Instructions
