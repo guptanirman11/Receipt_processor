@@ -20,7 +20,7 @@ async function uploadReceipt(){
         const data = await response.json();
 
         if (!response.ok) {
-            document.getElementById("points").innerText = `Error: ${data.error}`;
+            document.getElementById("receiptId").innerText = `Error: ${data.error}`;
             return;
         }
 
@@ -34,7 +34,7 @@ async function uploadReceipt(){
     } catch (error) {
 
         alert("Invalid JSON");
-        document.getElementById("points").innerText = "Invalid JSON format.";
+        document.getElementById("receiptId").innerText = "Invalid JSON format.";
     }
 
 
@@ -60,12 +60,10 @@ async function getPoints(receiptID) {
         if (response.ok) {
             document.getElementById("points").innerText = data.points;
         } else {
-            document.getElementById("points").innerText = `Error: ${data.error}`;
+            document.getElementById("points").innerText = `Description: ${data.error}`;
         }
 
     } catch (error) {
-
-        console.error("Request failed:", error);
         document.getElementById("points").innerText = "Error fetching points.";
 
     }

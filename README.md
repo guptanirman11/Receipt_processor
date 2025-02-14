@@ -33,8 +33,6 @@ Receipt_Process/
 |   |── receipt.json
 |── server/
 |   |── receipt_processor_service.go
-|── models/
-|   |── models.go
 |── go.mod
 |── go.sum
 |── README.md
