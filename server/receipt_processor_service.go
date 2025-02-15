@@ -66,7 +66,6 @@ func isAlphanumeric(s rune) bool {
 }
 
 func isMultipleOfQuarter(amount string) bool {
-	// Convert the string to float
 	num, err := strconv.ParseFloat(amount, 64)
 	if err != nil {
 		return false
@@ -84,7 +83,6 @@ func CalculatePoints(receipt Receipt) int {
 			points += 1
 		}
 	}
-	fmt.Println("DEBUG: Points after alphanumeric check", points)
 
 	// 	50 points if the Total is a round dollar amount with no cents.
 	if strings.HasSuffix(receipt.Total, ".00") {
@@ -99,9 +97,7 @@ func CalculatePoints(receipt Receipt) int {
 	// 5 points for every two Items on the receipt.
 	points += (math.Floor(float64(len(receipt.Items)) / 2.00)) * 5.00
 
-	fmt.Println("DEBUG: Points after every two item check", points)
-
-	// If the trimmed length of the item description is a multiple of 3, multiply the Price by 0.2 and round up to the nearest integer. The result is the number of points earned.
+	// If the trimmed length of the item description is a multiple of 3, multiply the Price by 0.2 and round up to the nearest integer
 	for _, item := range receipt.Items {
 
 		Price, err := strconv.ParseFloat(item.Price, 64)
@@ -114,7 +110,6 @@ func CalculatePoints(receipt Receipt) int {
 
 		if trimmedLength%3 == 0 {
 			points += math.Ceil(float64(Price) * 0.2)
-			fmt.Println("DEBUG: Points after item length check", points)
 
 		}
 	}
@@ -130,14 +125,13 @@ func CalculatePoints(receipt Receipt) int {
 			}
 		}
 	}
-	fmt.Println("DEBUG: Points after purchase date odd check", points)
 	// 10 points if the time of purchase is after 2:00pm and before 4:00pm.
 	if len(receipt.PurchaseTime) == 5 {
 		purchaseTime, err := time.Parse("15:04", receipt.PurchaseTime)
 
 		if err == nil {
-			startTime, _ := time.Parse("15:04", "14:00") // 2:00 PM
-			endTime, _ := time.Parse("15:04", "16:00")   // 4:00 PM
+			startTime, _ := time.Parse("15:04", "14:00")
+			endTime, _ := time.Parse("15:04", "16:00")
 
 			if purchaseTime.After(startTime) && purchaseTime.Before(endTime) {
 				points += 10

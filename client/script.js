@@ -29,7 +29,6 @@ async function uploadReceipt(){
 
         // Automatically fill in the receipt ID input field
         document.getElementById("receiptIDInput").value = receiptID;
-        // getPoints(receiptID)
 
     } catch (error) {
 
